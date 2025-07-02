@@ -989,14 +989,16 @@ function rpc_tl_query_result ($query_ids ::: array) ::: mixed[][];
 function rpc_tl_query_result_synchronously ($query_ids ::: array) ::: mixed[][];
 function rpc_tl_pending_queries_count () ::: int;
 
+function set_last_stored_tl_function_magic ($magic ::: int);
+
 interface RpcFunctionFetcher {
-  public function typed_fetch() : @tl\RpcFunctionReturnResult;
+  public function typedFetch() : @tl\RpcFunctionReturnResult;
 }
 
 /** @kphp-tl-class */
 interface RpcFunction {
   public function getTLFunctionName() : string;
-  public function custom_fetcher() : RpcFunctionFetcher;
+  public function customStore() : RpcFunctionFetcher;
 }
 
 /** @kphp-tl-class */

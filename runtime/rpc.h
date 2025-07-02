@@ -260,6 +260,7 @@ array<int64_t> f$rpc_tl_query(const class_instance<C$RpcConnection>& c, const ar
                               class_instance<C$KphpRpcRequestsExtraInfo> requests_extra_info = {}, bool need_responses_extra_info = false);
 
 array<mixed> f$rpc_tl_query_result_one(int64_t query_id);
+void f$set_last_stored_tl_function_magic(int64_t magic);
 
 array<array<mixed>> f$rpc_tl_query_result(const array<int64_t>& query_ids);
 
