@@ -9,9 +9,9 @@
 #include "runtime/tl/rpc_function.h"
 #include "runtime/tl/rpc_response.h"
 #include "runtime/tl/tl_builtins.h"
-#include "runtime/tl/tl_func_base.h"
 
 class_instance<C$RpcFunctionFetcher> f$VK$TL$RpcFunction$$customStore(class_instance<C$VK$TL$RpcFunction> const & arg) noexcept;
+std::unique_ptr<tl_func_base> make_tl_func_base_simple_wrapper(class_instance<C$RpcFunctionFetcher> && custom_fetcher);
 
 class RpcRequestResult;
 
