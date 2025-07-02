@@ -11,8 +11,8 @@
 #include "runtime/tl/tl_builtins.h"
 #include "runtime/tl/tl_func_base.h"
 
-class_instance<C$RpcFunctionFetcher> f$VK$TL$RpcFunction$$custom_fetcher(class_instance<C$VK$TL$RpcFunction> const & arg) noexcept;
-class_instance<C$VK$TL$RpcFunctionReturnResult> f$RpcFunctionFetcher$$typed_fetch(class_instance<C$RpcFunctionFetcher> const &v$this) noexcept;
+class_instance<C$RpcFunctionFetcher> f$VK$TL$RpcFunction$$customStore(class_instance<C$VK$TL$RpcFunction> const & arg) noexcept;
+class_instance<C$VK$TL$RpcFunctionReturnResult> f$RpcFunctionFetcher$$typedFetch(class_instance<C$RpcFunctionFetcher> const &v$this) noexcept;
 
 class RpcRequestResult;
 
@@ -115,7 +115,7 @@ struct tl_func_base_simple_wrapper : public tl_func_base {
   }
 
   virtual class_instance<C$VK$TL$RpcFunctionReturnResult> typed_fetch() {
-    return f$RpcFunctionFetcher$$typed_fetch(wrapped_); // call_custom_fetcher_wrapper_2_impl(wrapped_);
+    return f$RpcFunctionFetcher$$typedFetch(wrapped_);
   }
 
   virtual void rpc_server_typed_store(const class_instance<C$VK$TL$RpcFunctionReturnResult>&) {
@@ -137,7 +137,7 @@ public:
     php_assert(CurException.is_null());
     CurrentTlQuery::get().set_current_tl_function(tl_function_name());
     std::unique_ptr<tl_func_base> stored_fetcher;
-    auto custom_fetcher = f$VK$TL$RpcFunction$$custom_fetcher(storing_function_);
+    auto custom_fetcher = f$VK$TL$RpcFunction$$customStore(storing_function_);
     if (custom_fetcher.is_null()) {
       stored_fetcher = storing_function_.get()->store();
     } else {

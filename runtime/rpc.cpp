@@ -1331,6 +1331,10 @@ array<mixed> f$rpc_tl_query_result_one(int64_t query_id) {
   return start_resumable<array<mixed>>(new rpc_tl_query_result_one_resumable(query_id, std::move(rpc_query)));
 }
 
+void f$set_last_stored_tl_function_magic(int64_t magic) {
+  CurrentTlQuery::get().set_last_stored_tl_function_magic(magic);
+}
+
 class rpc_tl_query_result_resumable : public Resumable {
   using ReturnT = array<array<mixed>>;
 
