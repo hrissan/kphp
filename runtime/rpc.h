@@ -261,6 +261,9 @@ array<int64_t> f$rpc_tl_query(const class_instance<C$RpcConnection>& c, const ar
 
 array<mixed> f$rpc_tl_query_result_one(int64_t query_id);
 void f$set_last_stored_tl_function_magic(int64_t magic);
+void f$set_current_tl_function(const string& name);
+void f$raise_fetching_error(const string& text);
+void f$raise_storing_error(const string& text);
 
 array<array<mixed>> f$rpc_tl_query_result(const array<int64_t>& query_ids);
 
