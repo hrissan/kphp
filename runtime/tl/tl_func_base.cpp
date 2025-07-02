@@ -4,7 +4,8 @@
 
 #include "runtime/tl/tl_func_base.h"
 
-class_instance<C$VK$TL$RpcFunctionReturnResult> f$RpcFunctionFetcher$$typedFetch(class_instance<C$RpcFunctionFetcher> const &v$this) noexcept;
+class_instance<C$VK$TL$RpcFunctionReturnResult> f$RpcFunctionFetcher$$typedFetch(class_instance<C$RpcFunctionFetcher> const &fetcher) noexcept;
+void f$RpcFunctionFetcher$$typedStore(class_instance<C$RpcFunctionFetcher> const &fetcher, class_instance<C$VK$TL$RpcFunctionReturnResult> const &result) noexcept;
 
 struct tl_func_base_simple_wrapper : public tl_func_base {
   explicit tl_func_base_simple_wrapper(class_instance<C$RpcFunctionFetcher> && wrapped):wrapped_(std::move(wrapped)) {}
@@ -19,9 +20,8 @@ struct tl_func_base_simple_wrapper : public tl_func_base {
     return f$RpcFunctionFetcher$$typedFetch(wrapped_);
   }
 
-  virtual void rpc_server_typed_store(const class_instance<C$VK$TL$RpcFunctionReturnResult>&) {
-    // all functions annotated with @kphp will override this method with the generated code
-    php_critical_error("hrissan TODO: This function should never be called. Should be overridden in every @kphp TL function");
+  virtual void rpc_server_typed_store(const class_instance<C$VK$TL$RpcFunctionReturnResult> &result) {
+    return f$RpcFunctionFetcher$$typedStore(wrapped_, result);
   }
 
 private:

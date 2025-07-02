@@ -1335,6 +1335,18 @@ void f$set_last_stored_tl_function_magic(int64_t magic) {
   CurrentTlQuery::get().set_last_stored_tl_function_magic(magic);
 }
 
+void f$set_current_tl_function(const string& name) {
+  CurrentTlQuery::get().set_current_tl_function(name);
+}
+
+void f$raise_fetching_error(const string& text) {
+  CurrentTlQuery::get().raise_fetching_error("%s", text.c_str());
+}
+
+void f$raise_storing_error(const string& text) {
+  CurrentTlQuery::get().raise_storing_error("%s", text.c_str());
+}
+
 class rpc_tl_query_result_resumable : public Resumable {
   using ReturnT = array<array<mixed>>;
 
