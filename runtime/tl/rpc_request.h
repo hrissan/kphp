@@ -10,6 +10,10 @@
 #include "runtime/tl/rpc_response.h"
 #include "runtime/tl/tl_builtins.h"
 
+class_instance<C$RpcFunctionFetcher> f$VK$TL$RpcFunction$$customStore(class_instance<C$VK$TL$RpcFunction> const & arg) noexcept;
+class_instance<C$RpcFunctionFetcher> f$VK$TL$RpcFunction$$customFetch(class_instance<C$VK$TL$RpcFunction> const & arg) noexcept;
+std::unique_ptr<tl_func_base> make_tl_func_base_simple_wrapper(class_instance<C$RpcFunctionFetcher> && custom_fetcher);
+
 class RpcRequestResult;
 
 class RpcRequest {
@@ -110,7 +114,13 @@ public:
   std::unique_ptr<RpcRequestResult> store_request() const final {
     php_assert(CurException.is_null());
     CurrentTlQuery::get().set_current_tl_function(tl_function_name());
-    std::unique_ptr<tl_func_base> stored_fetcher = storing_function_.get()->store();
+    std::unique_ptr<tl_func_base> stored_fetcher;
+    auto custom_fetcher = f$VK$TL$RpcFunction$$customStore(storing_function_);
+    if (custom_fetcher.is_null()) {
+      stored_fetcher = storing_function_.get()->store();
+    } else {
+      stored_fetcher = make_tl_func_base_simple_wrapper(std::move(custom_fetcher));
+    }
     CurrentTlQuery::get().reset();
     if (!CurException.is_null()) {
       CurException = Optional<bool>{};
