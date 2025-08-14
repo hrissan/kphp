@@ -407,6 +407,13 @@ bool f$store_raw(const string& data) {
   return true;
 }
 
+string get_stored_tl_buffer() {
+  if (data_buf.size() < static_cast<string::size_type>(sizeof(RpcHeaders))) {
+      return string{};
+  }
+  return string{data_buf.c_str()+sizeof(RpcHeaders), data_buf.size()-static_cast<string::size_type>(sizeof(RpcHeaders))};
+}
+
 void f$store_raw_vector_double(const array<double>& vector) {
   data_buf.append(reinterpret_cast<const char*>(vector.get_const_vector_pointer()), sizeof(double) * vector.count());
 }

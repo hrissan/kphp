@@ -177,6 +177,21 @@ int64_t typed_rpc_tl_query_impl(const class_instance<C$RpcConnection>& connectio
   return query_id;
 }
 
+string typed_rpc_tl_query_store_for_tests_impl(const RpcRequest& req) {
+  f$rpc_clean();
+  if (req.empty()) {
+    php_warning("Writing rpc query error: query function is null");
+    return string{};
+  }
+
+  std::unique_ptr<RpcRequestResult> stored_fetcher = req.store_request();
+  if (!stored_fetcher) {
+    return string{};
+  }
+
+  return get_stored_tl_buffer();
+}
+
 class_instance<C$VK$TL$RpcResponse> typed_rpc_tl_query_result_one_impl(int64_t query_id, const RpcErrorFactory& error_factory) {
   auto resumable_finalizer = vk::finally([] { resumable_finished = true; });
 

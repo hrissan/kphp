@@ -168,6 +168,8 @@ bool f$store_error(int64_t error_code, const string& error_text);
 
 bool f$store_raw(const string& data);
 
+string get_stored_tl_buffer();
+
 void f$store_raw_vector_double(const array<double>& vector);
 
 bool f$set_fail_rpc_on_int32_overflow(bool fail_rpc); // TODO: remove when all RPC errors will be fixed
