@@ -16,6 +16,8 @@ int64_t typed_rpc_tl_query_impl(const class_instance<C$RpcConnection>& connectio
                                 rpc_request_extra_info_t& req_extra_info, bool collect_resp_extra_info, bool ignore_answer, bool bytes_estimating,
                                 size_t& bytes_sent, bool flush);
 
+string typed_rpc_tl_query_store_for_tests_impl(const RpcRequest& req);
+
 class_instance<C$VK$TL$RpcResponse> typed_rpc_tl_query_result_one_impl(int64_t query_id, const RpcErrorFactory& error_factory);
 
 array<class_instance<C$VK$TL$RpcResponse>> typed_rpc_tl_query_result_impl(const array<int64_t>& query_ids, const RpcErrorFactory& error_factory);
@@ -30,6 +32,14 @@ int64_t f$typed_rpc_tl_query_one(const class_instance<C$RpcConnection>& connecti
   size_t bytes_sent = 0;
   rpc_request_extra_info_t _{};
   return typed_rpc_tl_query_impl(connection, R{query_function}, timeout, _, false, false, false, bytes_sent, true);
+}
+
+template<typename F, typename R = KphpRpcRequest>
+string f$typed_rpc_tl_query_store_for_tests(const class_instance<F>& query_function) {
+  static_assert(std::is_base_of_v<C$VK$TL$RpcFunction, F>, "Unexpected type");
+  static_assert(std::is_same_v<KphpRpcRequest, R>, "Unexpected type");
+
+  return typed_rpc_tl_query_store_for_tests_impl(R{query_function});
 }
 
 template<typename F, typename R = KphpRpcRequest>
