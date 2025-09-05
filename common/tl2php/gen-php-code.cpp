@@ -356,8 +356,8 @@ struct FunctionGetTLFunctionName {
       os << ";" << std::endl;
     } else {
       std::stringstream ss;
-      ss << std::hex << std::setw(8) << std::showbase <<  std::setfill('0') << self.class_repr.magic_id;
-      os << " {" << std::endl << "    return " << ss.str() << ";" << std::endl << "  }" << SkipLine{};
+      ss << std::hex << std::setw(8) << std::setfill('0') << self.class_repr.magic_id;
+      os << " {" << std::endl << "    return 0x" << ss.str() << ";" << std::endl << "  }" << SkipLine{};
     }
     os << FunctionDeclaration{"getTLFunctionName", {}, "string", has_kphp_inline};
     if (self.class_repr.is_interface) {
