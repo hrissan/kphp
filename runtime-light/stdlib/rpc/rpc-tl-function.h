@@ -81,19 +81,19 @@ struct C$VK$TL$RpcFunctionReturnResult : abstract_refcountable_php_interface {
 // Every TL function has a corresponding Fetcher, which captures nat parameters,
 // required to fetch/store function result.
 struct C$VK$TL$RpcFunctionFetcher : abstract_refcountable_php_interface {
-  virtual const char* get_class() const {
+  virtual const char* get_class() const noexcept {
     return "VK\\TL\\RpcFunctionFetcher";
   }
-  virtual int32_t get_hash() const {
+  virtual int32_t get_hash() const noexcept {
     std::string_view name_view{C$VK$TL$RpcFunctionFetcher::get_class()};
     return static_cast<int32_t>(vk::murmur_hash<uint32_t>(name_view.data(), name_view.size()));
   }
 
-  virtual void accept(ToArrayVisitor&) noexcept {}
-  virtual void accept(CommonMemoryEstimateVisitor&) noexcept {}
-  virtual void accept(InstanceReferencesCountingVisitor&) noexcept {}
-  virtual void accept(InstanceDeepCopyVisitor&) noexcept {}
-  virtual void accept(InstanceDeepDestroyVisitor&) noexcept {}
+  virtual void accept(ToArrayVisitor& /*unused*/) noexcept {}
+  virtual void accept(CommonMemoryEstimateVisitor& /*unused*/) noexcept {}
+  virtual void accept(InstanceReferencesCountingVisitor& /*unused*/) noexcept {}
+  virtual void accept(InstanceDeepCopyVisitor& /*unused*/) noexcept {}
+  virtual void accept(InstanceDeepDestroyVisitor& /*unused*/) noexcept {}
 
   virtual size_t virtual_builtin_sizeof() const noexcept {
     return 0;
@@ -102,7 +102,7 @@ struct C$VK$TL$RpcFunctionFetcher : abstract_refcountable_php_interface {
     return nullptr;
   }
 
-  virtual ~C$VK$TL$RpcFunctionFetcher() = default;
+  ~C$VK$TL$RpcFunctionFetcher() override = default;
 };
 
 // function call response — ReqResult from the TL scheme — is a rpcResponseOk|rpcResponseHeader|rpcResponseError;
