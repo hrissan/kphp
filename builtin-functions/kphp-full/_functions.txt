@@ -1015,6 +1015,13 @@ interface RpcResponse {
 }
 
 /** @kphp-extern-func-info tl_common_h_dep */
+function tests_typed_rpc_tl_query_store (@tl\RpcFunction $query_function) ::: string;
+/** @kphp-extern-func-info can_throw */
+function tests_typed_rpc_tl_query_result_store(@tl\RpcFunctionReturnResult $response) ::: string;
+/** @kphp-extern-func-info tl_common_h_dep */
+function tests_typed_rpc_tl_query_result_fetch(string $data) ::: @tl\RpcFunctionReturnResult;
+
+/** @kphp-extern-func-info tl_common_h_dep */
 function typed_rpc_tl_query_one (\RpcConnection $connection, @tl\RpcFunction $query_function, $timeout ::: float = -1.0) ::: int;
 /** @kphp-extern-func-info tl_common_h_dep */
 function typed_rpc_tl_query (\RpcConnection $connection, @tl\RpcFunction[] $query_functions, $timeout ::: float = -1.0, $ignore_answer ::: bool = false, \KphpRpcRequestsExtraInfo $requests_extra_info = null, $need_responses_extra_info ::: bool = false) ::: int[];
