@@ -78,6 +78,8 @@ struct C$VK$TL$RpcFunctionReturnResult : abstract_refcountable_php_interface {
   ~C$VK$TL$RpcFunctionReturnResult() override = default;
 };
 
+// Every TL function has a corresponding Fetcher, which captures nat parameters,
+// required to fetch/store function result.
 struct C$VK$TL$RpcFunctionFetcher : abstract_refcountable_php_interface {
   virtual const char* get_class() const {
     return "VK\\TL\\RpcFunctionFetcher";
