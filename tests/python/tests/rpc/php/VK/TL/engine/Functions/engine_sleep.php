@@ -52,8 +52,10 @@ class engine_sleep implements TL\RpcFunction {
 
   /**
    * @kphp-inline
+   *
+   * @return int
    */
-  public function getTLFunctionMagic() : int {
+  public function getTLFunctionMagic() {
     return 0x3d3bcd48;
   }
 

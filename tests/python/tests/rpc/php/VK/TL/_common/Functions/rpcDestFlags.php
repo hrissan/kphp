@@ -62,8 +62,10 @@ class rpcDestFlags implements TL\RpcFunction {
 
   /**
    * @kphp-inline
+   *
+   * @return int
    */
-  public function getTLFunctionMagic() : int {
+  public function getTLFunctionMagic() {
     return 0xe352035e;
   }
 

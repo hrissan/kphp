@@ -17,8 +17,10 @@ interface RpcFunction {
 
   /**
    * @kphp-inline
+   *
+   * @return int
    */
-  public function getTLFunctionMagic() : int;
+  public function getTLFunctionMagic();
   /**
    * @kphp-inline
    *

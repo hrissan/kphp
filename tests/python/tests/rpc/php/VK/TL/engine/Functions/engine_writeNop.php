@@ -48,8 +48,10 @@ class engine_writeNop implements TL\RpcFunction {
 
   /**
    * @kphp-inline
+   *
+   * @return int
    */
-  public function getTLFunctionMagic() : int {
+  public function getTLFunctionMagic() {
     return 0x58160af4;
   }
 

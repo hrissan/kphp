@@ -48,8 +48,10 @@ class engine_version implements TL\RpcFunction {
 
   /**
    * @kphp-inline
+   *
+   * @return int
    */
-  public function getTLFunctionMagic() : int {
+  public function getTLFunctionMagic() {
     return 0x1a2e06fa;
   }
 

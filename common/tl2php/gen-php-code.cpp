@@ -342,8 +342,10 @@ struct FunctionGetTLFunctionName {
   public function typedFetch())";
     const char* header_magic = R"(  /**
    * @kphp-inline
+   *
+   * @return int
    */
-  public function getTLFunctionMagic() : int)";
+  public function getTLFunctionMagic())";
     const char* body_null = R"({
     return null;
   }
