@@ -50,7 +50,7 @@ class engine_pid implements TL\RpcFunction {
    * @kphp-inline
    */
   public function getTLFunctionMagic() : int {
-    return 1436380726;
+    return 0x559d6e36;
   }
 
   /**

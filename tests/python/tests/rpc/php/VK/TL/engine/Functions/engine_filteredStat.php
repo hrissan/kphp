@@ -54,7 +54,7 @@ class engine_filteredStat implements TL\RpcFunction {
    * @kphp-inline
    */
   public function getTLFunctionMagic() : int {
-    return 1497919702;
+    return 0x594870d6;
   }
 
   /**

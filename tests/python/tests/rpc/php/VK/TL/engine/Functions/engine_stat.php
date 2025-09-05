@@ -50,7 +50,7 @@ class engine_stat implements TL\RpcFunction {
    * @kphp-inline
    */
   public function getTLFunctionMagic() : int {
-    return -273431701;
+    return 0xefb3c36b;
   }
 
   /**

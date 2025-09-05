@@ -50,7 +50,7 @@ class engine_nop implements TL\RpcFunction {
    * @kphp-inline
    */
   public function getTLFunctionMagic() : int {
-    return 376158150;
+    return 0x166bb7c6;
   }
 
   /**

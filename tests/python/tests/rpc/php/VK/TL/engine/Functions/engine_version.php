@@ -50,7 +50,7 @@ class engine_version implements TL\RpcFunction {
    * @kphp-inline
    */
   public function getTLFunctionMagic() : int {
-    return 439224058;
+    return 0x1a2e06fa;
   }
 
   /**

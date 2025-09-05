@@ -10,6 +10,7 @@
 #include <exception>
 #include <fstream>
 #include <ftw.h>
+#include <iomanip>
 #include <iterator>
 #include <map>
 #include <sstream>
@@ -352,7 +353,9 @@ struct FunctionGetTLFunctionName {
     if (self.class_repr.is_interface) {
       os << ";" << std::endl;
     } else {
-      os << " {" << std::endl << "    return " << self.class_repr.magic_id << ";" << std::endl << "  }" << SkipLine{};
+      std::stringstream ss;
+      ss << std::hex << std::setw(8) << std::showbase <<  std::setfill('0') << self.class_repr.magic_id;
+      os << " {" << std::endl << "    return " << ss.str() << ";" << std::endl << "  }" << SkipLine{};
     }
     os << FunctionDeclaration{"getTLFunctionName", {}, "string", has_kphp_inline};
     if (self.class_repr.is_interface) {

@@ -69,7 +69,7 @@ class rpcDestActorFlags implements TL\RpcFunction {
    * @kphp-inline
    */
   public function getTLFunctionMagic() : int {
-    return -257577737;
+    return 0xf0a5acf7;
   }
 
   /**

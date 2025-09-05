@@ -50,7 +50,7 @@ class engine_count implements TL\RpcFunction {
    * @kphp-inline
    */
   public function getTLFunctionMagic() : int {
-    return 433123360;
+    return 0x19d0f020;
   }
 
   /**
