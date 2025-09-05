@@ -11,8 +11,8 @@ require_once __DIR__ . '/rpc_fetcher.txt';
 interface RpcFunction {
   public function getTLFunctionMagic() : int;
   public function getTLFunctionName() : string;
-  public function typedStore() : RpcFunctionFetcher;
-  public function typedFetch() : RpcFunctionFetcher;
+  public function typedStore() : @tl\RpcFunctionFetcher;
+  public function typedFetch() : @tl\RpcFunctionFetcher;
 }
 
 /** @kphp-tl-class */
