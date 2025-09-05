@@ -48,11 +48,36 @@ class engine_version implements TL\RpcFunction {
 
   /**
    * @kphp-inline
+   */
+  public function getTLFunctionMagic() : int {
+    return 439224058;
+  }
+
+  /**
+   * @kphp-inline
    *
    * @return string
    */
   public function getTLFunctionName() {
     return 'engine.version';
+  }
+
+  /**
+   * @kphp-inline
+   *
+   * @return TL\RpcFunctionFetcher
+   */
+  public function typedStore(){
+    return null;
+  }
+
+  /**
+   * @kphp-inline
+   *
+   * @return TL\RpcFunctionFetcher
+   */
+  public function typedFetch(){
+    return null;
   }
 
 }

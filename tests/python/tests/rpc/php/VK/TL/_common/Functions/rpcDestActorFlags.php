@@ -67,11 +67,36 @@ class rpcDestActorFlags implements TL\RpcFunction {
 
   /**
    * @kphp-inline
+   */
+  public function getTLFunctionMagic() : int {
+    return -257577737;
+  }
+
+  /**
+   * @kphp-inline
    *
    * @return string
    */
   public function getTLFunctionName() {
     return 'rpcDestActorFlags';
+  }
+
+  /**
+   * @kphp-inline
+   *
+   * @return TL\RpcFunctionFetcher
+   */
+  public function typedStore(){
+    return null;
+  }
+
+  /**
+   * @kphp-inline
+   *
+   * @return TL\RpcFunctionFetcher
+   */
+  public function typedFetch(){
+    return null;
   }
 
 }

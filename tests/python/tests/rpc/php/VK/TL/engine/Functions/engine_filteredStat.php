@@ -13,41 +13,48 @@ use VK\TL;
 /**
  * @kphp-tl-class
  */
-class engine_sleep implements TL\RpcFunction {
+class engine_filteredStat implements TL\RpcFunction {
 
-  /** @var int */
-  public $time_ms = 0;
+  /** @var string[] */
+  public $stat_names = [];
 
   /** Allows kphp implicitly load function result class */
-  private const RESULT = TL\engine\Functions\engine_sleep_result::class;
+  private const RESULT = TL\engine\Functions\engine_filteredStat_result::class;
 
   /**
-   * @param int $time_ms
+   * @param string[] $stat_names
    */
-  public function __construct($time_ms = 0) {
-    $this->time_ms = $time_ms;
+  public function __construct($stat_names = []) {
+    $this->stat_names = $stat_names;
   }
 
   /**
    * @param TL\RpcFunctionReturnResult $function_return_result
-   * @return boolean
+   * @return string[]
    */
   public static function functionReturnValue($function_return_result) {
-    if ($function_return_result instanceof engine_sleep_result) {
+    if ($function_return_result instanceof engine_filteredStat_result) {
       return $function_return_result->value;
     }
     warning('Unexpected result type in functionReturnValue: ' . ($function_return_result ? get_class($function_return_result) : 'null'));
-    return (new engine_sleep_result())->value;
+    return (new engine_filteredStat_result())->value;
   }
 
   /**
    * @kphp-inline
    *
    * @param TL\RpcResponse $response
-   * @return boolean
+   * @return string[]
    */
   public static function result(TL\RpcResponse $response) {
     return self::functionReturnValue($response->getResult());
+  }
+
+  /**
+   * @kphp-inline
+   */
+  public function getTLFunctionMagic() : int {
+    return 1497919702;
   }
 
   /**
@@ -56,7 +63,25 @@ class engine_sleep implements TL\RpcFunction {
    * @return string
    */
   public function getTLFunctionName() {
-    return 'engine.sleep';
+    return 'engine.filteredStat';
+  }
+
+  /**
+   * @kphp-inline
+   *
+   * @return TL\RpcFunctionFetcher
+   */
+  public function typedStore(){
+    return null;
+  }
+
+  /**
+   * @kphp-inline
+   *
+   * @return TL\RpcFunctionFetcher
+   */
+  public function typedFetch(){
+    return null;
   }
 
 }
@@ -64,9 +89,9 @@ class engine_sleep implements TL\RpcFunction {
 /**
  * @kphp-tl-class
  */
-class engine_sleep_result implements TL\RpcFunctionReturnResult {
+class engine_filteredStat_result implements TL\RpcFunctionReturnResult {
 
-  /** @var boolean */
-  public $value = false;
+  /** @var string[] */
+  public $value = [];
 
 }

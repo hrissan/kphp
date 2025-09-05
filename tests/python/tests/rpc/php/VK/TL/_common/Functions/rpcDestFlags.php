@@ -62,11 +62,36 @@ class rpcDestFlags implements TL\RpcFunction {
 
   /**
    * @kphp-inline
+   */
+  public function getTLFunctionMagic() : int {
+    return -481164450;
+  }
+
+  /**
+   * @kphp-inline
    *
    * @return string
    */
   public function getTLFunctionName() {
     return 'rpcDestFlags';
+  }
+
+  /**
+   * @kphp-inline
+   *
+   * @return TL\RpcFunctionFetcher
+   */
+  public function typedStore(){
+    return null;
+  }
+
+  /**
+   * @kphp-inline
+   *
+   * @return TL\RpcFunctionFetcher
+   */
+  public function typedFetch(){
+    return null;
   }
 
 }

@@ -48,11 +48,36 @@ class engine_stat implements TL\RpcFunction {
 
   /**
    * @kphp-inline
+   */
+  public function getTLFunctionMagic() : int {
+    return -273431701;
+  }
+
+  /**
+   * @kphp-inline
    *
    * @return string
    */
   public function getTLFunctionName() {
     return 'engine.stat';
+  }
+
+  /**
+   * @kphp-inline
+   *
+   * @return TL\RpcFunctionFetcher
+   */
+  public function typedStore(){
+    return null;
+  }
+
+  /**
+   * @kphp-inline
+   *
+   * @return TL\RpcFunctionFetcher
+   */
+  public function typedFetch(){
+    return null;
   }
 
 }

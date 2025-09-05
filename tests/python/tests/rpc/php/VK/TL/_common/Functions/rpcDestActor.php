@@ -57,11 +57,36 @@ class rpcDestActor implements TL\RpcFunction {
 
   /**
    * @kphp-inline
+   */
+  public function getTLFunctionMagic() : int {
+    return 1969793725;
+  }
+
+  /**
+   * @kphp-inline
    *
    * @return string
    */
   public function getTLFunctionName() {
     return 'rpcDestActor';
+  }
+
+  /**
+   * @kphp-inline
+   *
+   * @return TL\RpcFunctionFetcher
+   */
+  public function typedStore(){
+    return null;
+  }
+
+  /**
+   * @kphp-inline
+   *
+   * @return TL\RpcFunctionFetcher
+   */
+  public function typedFetch(){
+    return null;
   }
 
 }

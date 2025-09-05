@@ -13,10 +13,10 @@ use VK\TL;
 /**
  * @kphp-tl-class
  */
-class engine_pid implements TL\RpcFunction {
+class engine_readNop implements TL\RpcFunction {
 
   /** Allows kphp implicitly load function result class */
-  private const RESULT = TL\engine\Functions\engine_pid_result::class;
+  private const RESULT = TL\engine\Functions\engine_readNop_result::class;
 
   /**
    * @kphp-inline
@@ -26,21 +26,21 @@ class engine_pid implements TL\RpcFunction {
 
   /**
    * @param TL\RpcFunctionReturnResult $function_return_result
-   * @return TL\net\Types\net_pid
+   * @return boolean
    */
   public static function functionReturnValue($function_return_result) {
-    if ($function_return_result instanceof engine_pid_result) {
+    if ($function_return_result instanceof engine_readNop_result) {
       return $function_return_result->value;
     }
     warning('Unexpected result type in functionReturnValue: ' . ($function_return_result ? get_class($function_return_result) : 'null'));
-    return (new engine_pid_result())->value;
+    return (new engine_readNop_result())->value;
   }
 
   /**
    * @kphp-inline
    *
    * @param TL\RpcResponse $response
-   * @return TL\net\Types\net_pid
+   * @return boolean
    */
   public static function result(TL\RpcResponse $response) {
     return self::functionReturnValue($response->getResult());
@@ -50,7 +50,7 @@ class engine_pid implements TL\RpcFunction {
    * @kphp-inline
    */
   public function getTLFunctionMagic() : int {
-    return 1436380726;
+    return -1658092513;
   }
 
   /**
@@ -59,7 +59,7 @@ class engine_pid implements TL\RpcFunction {
    * @return string
    */
   public function getTLFunctionName() {
-    return 'engine.pid';
+    return 'engine.readNop';
   }
 
   /**
@@ -85,9 +85,9 @@ class engine_pid implements TL\RpcFunction {
 /**
  * @kphp-tl-class
  */
-class engine_pid_result implements TL\RpcFunctionReturnResult {
+class engine_readNop_result implements TL\RpcFunctionReturnResult {
 
-  /** @var TL\net\Types\net_pid */
-  public $value = null;
+  /** @var boolean */
+  public $value = true;
 
 }

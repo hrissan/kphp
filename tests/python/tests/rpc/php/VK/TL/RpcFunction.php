@@ -17,10 +17,26 @@ interface RpcFunction {
 
   /**
    * @kphp-inline
+   */
+  public function getTLFunctionMagic() : int;
+  /**
+   * @kphp-inline
    *
    * @return string
    */
   public function getTLFunctionName();
+  /**
+   * @kphp-inline
+   *
+   * @return TL\RpcFunctionFetcher
+   */
+  public function typedStore();
+  /**
+   * @kphp-inline
+   *
+   * @return TL\RpcFunctionFetcher
+   */
+  public function typedFetch();
 }
 
 /**
